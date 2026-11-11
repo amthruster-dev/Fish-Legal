@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.location.Location
 import android.os.Bundle
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -15,7 +16,11 @@ import com.fishlegal.app.data.CatchLog
 import com.fishlegal.app.ml.FishClassifier
 import com.fishlegal.app.ml.LabelMap
 import com.fishlegal.app.location.ZoneLookup
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,6 +33,8 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var classifier: FishClassifier
     private var modelReady = false
     private var imageCapture: ImageCapture? = null
+    private var camera: Camera? = null
+    private var torchOn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +58,17 @@ class CameraActivity : AppCompatActivity() {
         findViewById<android.widget.Button>(R.id.btnCapture).setOnClickListener {
             capturePhoto()
         }
+
+        findViewById<android.widget.ImageButton>(R.id.btnFlashlight).setOnClickListener {
+            toggleFlashlight()
+        }
+    }
+
+    private fun toggleFlashlight() {
+        val cam = camera ?: return
+        if (!cam.cameraInfo.hasFlashUnit()) return
+        torchOn = !torchOn
+        cam.cameraControl.enableTorch(torchOn)
     }
 
     private fun startCamera() {
@@ -64,7 +82,7 @@ class CameraActivity : AppCompatActivity() {
             val selector = CameraSelector.DEFAULT_BACK_CAMERA
             try {
                 provider.unbindAll()
-                provider.bindToLifecycle(this, selector, preview, imageCapture)
+                camera = provider.bindToLifecycle(this, selector, preview, imageCapture)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -82,10 +100,7 @@ class CameraActivity : AppCompatActivity() {
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    LocationServices.getFusedLocationProviderClient(this@CameraActivity)
-                        .lastLocation.addOnSuccessListener { location ->
-                            processCapture(photoFile, location)
-                        }
+                    fetchLocation { location -> processCapture(photoFile, location) }
                 }
 
                 override fun onError(exception: ImageCaptureException) {
@@ -93,6 +108,35 @@ class CameraActivity : AppCompatActivity() {
                 }
             }
         )
+    }
+
+    /**
+     * lastLocation is frequently null right after install/permission grant since
+     * nothing has requested a fix yet. Fall back to an active one-shot request so
+     * the regulation lookup for the zone the user is actually in doesn't silently
+     * fail. Still works fully offline once GPS has a fix (no network needed).
+     */
+    @SuppressLint("MissingPermission")
+    private fun fetchLocation(onResult: (Location?) -> Unit) {
+        val client = LocationServices.getFusedLocationProviderClient(this)
+        client.lastLocation.addOnSuccessListener { cached ->
+            if (cached != null) {
+                onResult(cached)
+            } else {
+                val request = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 0)
+                    .setMaxUpdates(1)
+                    .build()
+                val callback = object : LocationCallback() {
+                    override fun onLocationResult(result: LocationResult) {
+                        client.removeLocationUpdates(this)
+                        onResult(result.lastLocation)
+                    }
+                }
+                client.requestLocationUpdates(request, callback, Looper.getMainLooper())
+            }
+        }.addOnFailureListener {
+            onResult(null)
+        }
     }
 
     private fun processCapture(photoFile: File, location: Location?) {
@@ -145,6 +189,7 @@ class CameraActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        camera?.cameraControl?.enableTorch(false)
         if (modelReady) classifier.close()
     }
 }
