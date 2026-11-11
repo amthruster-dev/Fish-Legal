@@ -19,17 +19,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         SyncWorker.schedulePeriodic(applicationContext)
         SyncWorker.syncNow(applicationContext) // opportunistic; no-ops if offline
 
-        findViewById<android.widget.Button>(R.id.btnIdentifyFish).setOnClickListener {
-            if (hasPermissions()) {
-                startActivity(Intent(this, CameraActivity::class.java))
-            } else {
-                ActivityCompat.requestPermissions(this, requiredPermissions, REQUEST_CODE)
-            }
+        if (hasPermissions()) {
+            startActivity(Intent(this, CameraActivity::class.java))
+            finish()
+        } else {
+            ActivityCompat.requestPermissions(this, requiredPermissions, REQUEST_CODE)
         }
     }
 
@@ -43,6 +41,12 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE && hasPermissions()) {
             startActivity(Intent(this, CameraActivity::class.java))
+            finish()
+        } else {
+            android.widget.Toast.makeText(
+                this, "Camera and location permissions are required to use FishLegal", android.widget.Toast.LENGTH_LONG
+            ).show()
+            finish()
         }
     }
 
