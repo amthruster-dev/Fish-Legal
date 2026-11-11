@@ -8,6 +8,9 @@ import com.fishlegal.app.ml.LabelMap
 import com.fishlegal.app.network.ApiClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import java.util.concurrent.TimeUnit
 
@@ -78,9 +81,9 @@ class SyncWorker(context: Context, params: WorkerParameters) : CoroutineWorker(c
         return try {
             val file = File(entry.photoPath)
             if (!file.exists()) return false
-            val reqFile = okhttp3.RequestBody.create("image/jpeg".toMediaType(), file)
+            val reqFile = file.asRequestBody("image/jpeg".toMediaType())
             val photoPart = okhttp3.MultipartBody.Part.createFormData("photo", file.name, reqFile)
-            fun text(v: String) = okhttp3.RequestBody.create("text/plain".toMediaType(), v)
+            fun text(v: String) = v.toRequestBody("text/plain".toMediaType())
 
             val resp = ApiClient.service.uploadCatch(
                 photoPart,
@@ -125,5 +128,3 @@ class SyncWorker(context: Context, params: WorkerParameters) : CoroutineWorker(c
         }
     }
 }
-
-private fun String.toMediaType() = okhttp3.MediaType.parse(this)
