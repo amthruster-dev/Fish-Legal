@@ -26,6 +26,7 @@ import java.io.FileOutputStream
 class CameraActivity : AppCompatActivity() {
 
     private lateinit var classifier: FishClassifier
+    private var modelReady = false
     private var imageCapture: ImageCapture? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +34,17 @@ class CameraActivity : AppCompatActivity() {
         setContentView(R.layout.activity_camera)
 
         classifier = FishClassifier(this)
-        LabelMap.load(this)
-        classifier.loadModel()
+        try {
+            LabelMap.load(this)
+            classifier.loadModel()
+            modelReady = true
+        } catch (e: Exception) {
+            // Placeholder/missing model (e.g. not yet trained or synced). Continue
+            // without crashing — capture still records the photo, location and
+            // zone; the result screen will say the species couldn't be identified.
+            e.printStackTrace()
+            modelReady = false
+        }
 
         startCamera()
 
@@ -90,8 +100,17 @@ class CameraActivity : AppCompatActivity() {
             val bitmap = withContext(Dispatchers.IO) {
                 android.graphics.BitmapFactory.decodeFile(photoFile.absolutePath)
             }
-            val prediction = withContext(Dispatchers.Default) { classifier.classify(bitmap) }
-            val speciesId = LabelMap.speciesIdForIndex(prediction.labelIndex)
+            val prediction = if (modelReady) {
+                try {
+                    withContext(Dispatchers.Default) { classifier.classify(bitmap) }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    FishClassifier.Prediction(-1, 0f)
+                }
+            } else {
+                FishClassifier.Prediction(-1, 0f)
+            }
+            val speciesId = if (prediction.labelIndex >= 0) LabelMap.speciesIdForIndex(prediction.labelIndex) else null
 
             val db = AppDatabase.get(applicationContext)
             val lat = location?.latitude ?: 0.0
@@ -126,6 +145,6 @@ class CameraActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        classifier.close()
+        if (modelReady) classifier.close()
     }
 }

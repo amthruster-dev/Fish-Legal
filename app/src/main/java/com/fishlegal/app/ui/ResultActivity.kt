@@ -27,8 +27,11 @@ class ResultActivity : AppCompatActivity() {
                 db.regulationDao().getRule(zoneId, speciesId)
             } else null
 
-            nameView.text = species?.let { "${it.commonName} (${it.scientificName})" }
-                ?: "Species not recognized (confidence ${(confidence * 100).toInt()}%)"
+            nameView.text = when {
+                species != null -> "${species.commonName} (${species.scientificName})"
+                speciesId == null -> "Identification not available yet (model not installed)"
+                else -> "Species not recognized (confidence ${(confidence * 100).toInt()}%)"
+            }
 
             regView.text = when {
                 zoneId == null -> "Location unavailable — can't look up local regulations."
