@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.FishLegal" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#0B5D8C</item>
+        <item name="colorPrimaryDark">#083F61</item>
+        <item name="colorAccent">#2BA6A4</item>
+    </style>
+</resources>
