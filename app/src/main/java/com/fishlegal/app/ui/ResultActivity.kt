@@ -36,14 +36,18 @@ class ResultActivity : AppCompatActivity() {
             regView.text = when {
                 zoneId == null -> "Location unavailable — can't look up local regulations."
                 rule == null -> "No regulation data on file for this zone/species."
-                rule.isClosed -> "Season CLOSED for this species here."
+                rule.isClosed -> buildString {
+                    append("CLOSED — take/possession not allowed.\n")
+                    rule.notes?.let { append("\n$it") }
+                }
                 else -> buildString {
                     rule.minSizeInches?.let { append("Min size: ${it}in\n") }
                     rule.maxSizeInches?.let { append("Max size: ${it}in\n") }
                     rule.dailyBagLimit?.let { append("Bag limit: $it/day\n") }
                     if (rule.openSeasonStart != null && rule.openSeasonEnd != null) {
-                        append("Season: ${rule.openSeasonStart} - ${rule.openSeasonEnd}")
+                        append("Season: ${rule.openSeasonStart} - ${rule.openSeasonEnd}\n")
                     }
+                    rule.notes?.let { append("\n$it") }
                 }
             }
 

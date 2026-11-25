@@ -7,8 +7,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.fishlegal.app.R
+import com.fishlegal.app.data.AppDatabase
+import com.fishlegal.app.data.SeedLoader
 import com.fishlegal.app.sync.SyncWorker
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,11 +27,17 @@ class MainActivity : AppCompatActivity() {
         SyncWorker.schedulePeriodic(applicationContext)
         SyncWorker.syncNow(applicationContext) // opportunistic; no-ops if offline
 
-        if (hasPermissions()) {
-            startActivity(Intent(this, CameraActivity::class.java))
-            finish()
-        } else {
-            ActivityCompat.requestPermissions(this, requiredPermissions, REQUEST_CODE)
+        lifecycleScope.launch {
+            // Bundled species + CA regulations so the app isn't empty before the
+            // first online sync ever happens.
+            SeedLoader.seedIfNeeded(applicationContext, AppDatabase.get(applicationContext))
+
+            if (hasPermissions()) {
+                startActivity(Intent(this@MainActivity, CameraActivity::class.java))
+                finish()
+            } else {
+                ActivityCompat.requestPermissions(this@MainActivity, requiredPermissions, REQUEST_CODE)
+            }
         }
     }
 

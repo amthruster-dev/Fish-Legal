@@ -1,0 +1,192 @@
+[
+  {
+    "zoneId": "ca_ocean", "speciesId": "kelp_bass",
+    "minSizeInches": 14, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "5/day in any combination with barred & spotted sand bass; alternate 10in size limit may apply in some areas — verify locally.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "barred_sand_bass",
+    "minSizeInches": 14, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "5/day combined with kelp & spotted sand bass; no more than 4 barred sand bass of that 5.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "spotted_sand_bass",
+    "minSizeInches": 14, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "5/day combined with kelp & barred sand bass.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "california_halibut",
+    "minSizeInches": 22, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "5/day limit applies south of Point Sur; different limit north of Point Sur — verify locally.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "white_seabass",
+    "minSizeInches": 28, "maxSizeInches": null, "dailyBagLimit": 3,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Only 1/day south of Point Conception from Mar 15-Jun 15. Alternate 20in size limit may apply.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "california_sheephead",
+    "minSizeInches": 12, "maxSizeInches": null, "dailyBagLimit": 2,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Year-round for divers/shore anglers; boat-based anglers Mar 1-Dec 31 only.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "yellowtail",
+    "minSizeInches": 24, "maxSizeInches": null, "dailyBagLimit": 10,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Fork length. Up to 5 fish under 24in may be kept as part of the 10-fish limit.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "california_scorpionfish",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "No size limit. Also called sculpin.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "leopard_shark",
+    "minSizeInches": 36, "maxSizeInches": null, "dailyBagLimit": 3,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Total length. Year-round, all depths.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "giant_sea_bass",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": 0,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": true,
+    "notes": "Take and possession prohibited year-round.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "white_shark",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": 0,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": true,
+    "notes": "May not be taken or possessed at any time.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "lingcod",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": null,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Part of groundfish regulations — size/bag limits and depth restrictions change by season. Check the current CDFW groundfish summary before keeping this species.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Groundfish-Summary"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "cabezon",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": null,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Part of groundfish regulations — size/bag limits and depth restrictions change by season. Check the current CDFW groundfish summary before keeping this species.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Groundfish-Summary"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "redtail_surfperch",
+    "minSizeInches": 10.5, "maxSizeInches": null, "dailyBagLimit": 20,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "20 surfperch combined (max 10 of any one species).",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Fishing-Map/southern"
+  },
+  {
+    "zoneId": "ca_ocean", "speciesId": "striped_bass",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": null,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Striped bass rules are mainly Delta/bay inland regulations, not general ocean rules — see inland zone data.",
+    "sourceUrl": "https://wildlife.ca.gov/Fishing/Ocean/Regulations/Sport-Fishing/General-Ocean-Fishing-Regs"
+  },
+
+  {
+    "zoneId": "ca_inland", "speciesId": "largemouth_bass",
+    "minSizeInches": 12, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "12in minimum applies in lakes/reservoirs and the Delta; no minimum size in rivers, streams, and private ponds by default. Combined black bass limit of 5/day. Many specific waters have different limits — check the local water's listing.",
+    "sourceUrl": "https://wildlife.ca.gov/Regulations#fresh-regs"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "smallmouth_bass",
+    "minSizeInches": 12, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Combined black bass limit of 5/day with largemouth & spotted bass. Many specific waters have different limits — check the local water's listing.",
+    "sourceUrl": "https://wildlife.ca.gov/Regulations#fresh-regs"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "spotted_bass",
+    "minSizeInches": 12, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Combined black bass limit of 5/day with largemouth & smallmouth bass. Many specific waters have different limits — check the local water's listing.",
+    "sourceUrl": "https://wildlife.ca.gov/Regulations#fresh-regs"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "rainbow_trout",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "5/day, 10 in possession, combined across trout species, for general district waters. In streams/rivers/canals, limit drops to zero (catch-and-release only) from Nov 16 through the Friday before the last Saturday in April. Many specific waters set their own limits.",
+    "sourceUrl": "https://www.law.cornell.edu/regulations/california/14-CCR-5.85"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "brown_trout",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": 5,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Combined with other trout species at 5/day, 10 possession, for general district waters. Same seasonal flowing-water closure as rainbow trout applies.",
+    "sourceUrl": "https://www.law.cornell.edu/regulations/california/14-CCR-5.85"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "channel_catfish",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": null,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "No statewide size limit; no general bag limit stated for general district waters (open all year). Some specific waters set their own limit — check locally.",
+    "sourceUrl": "https://wildlife.ca.gov/Regulations#fresh-regs"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "white_catfish",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": null,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "No statewide size limit; no general bag limit stated for general district waters (open all year). Some specific waters set their own limit — check locally.",
+    "sourceUrl": "https://wildlife.ca.gov/Regulations#fresh-regs"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "bluegill",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": 25,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Combined sunfish & crappie limit of 25/day, no size limit, open all year, for general district waters. Some specific lakes (e.g. Barrett, Upper Otay) have a zero limit.",
+    "sourceUrl": "https://www.law.cornell.edu/regulations/california/14-CCR-5.85"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "black_crappie",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": 25,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Combined sunfish & crappie limit of 25/day for general district waters. Some specific lakes set a 10in minimum (e.g. Hodges, El Capitan) or a zero limit (e.g. Barrett, Upper Otay).",
+    "sourceUrl": "https://www.law.cornell.edu/regulations/california/14-CCR-5.85"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "striped_bass",
+    "minSizeInches": 18, "maxSizeInches": null, "dailyBagLimit": 2,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "18in total length minimum, 2/day, open all year for general district waters.",
+    "sourceUrl": "https://wildlife.ca.gov/Regulations#fresh-regs"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "white_sturgeon",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": 1,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "1/day, 1 per calendar year statewide, 2 per vessel per day. A slot/size limit applies and has changed recently via emergency regulation — verify the current slot limit and report card requirement before keeping one. Closed Jan 1-May 31 above the Hwy 50 bridge (Sacramento R.) and I-5 bridge (San Joaquin R.).",
+    "sourceUrl": "https://wildlife.ca.gov/Regulations#fresh-regs"
+  },
+  {
+    "zoneId": "ca_inland", "speciesId": "california_scorpionfish",
+    "minSizeInches": null, "maxSizeInches": null, "dailyBagLimit": null,
+    "openSeasonStart": null, "openSeasonEnd": null, "isClosed": false,
+    "notes": "Saltwater species — this is not an inland/freshwater fish. See ocean zone data if caught in bay/ocean waters.",
+    "sourceUrl": "https://wildlife.ca.gov/Regulations#fresh-regs"
+  }
+]
